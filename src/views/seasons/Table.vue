@@ -50,11 +50,11 @@ export default class Table extends Vue {
     return this.playerStats.length
   }
 
-  gamesRatio(playersGames: number): number {
+  gamesRatio(playersGames: number): string {
     if (!this.season) {
-      return 0
+      return '0'
     }
-    return playersGames / this.season.games.length
+    return (playersGames / this.season.games.length).toFixed(2)
   }
 
   mounted(): void {
