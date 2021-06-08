@@ -10,8 +10,9 @@ class SeasonsService {
       this.client = client
    }
 
-   getSeasonsTable(): Promise<SeasonsTableResponse> {
-      return this.client.get("/seasons/table").then((response: ResponseData) => response.data as SeasonsTableResponse)
+   getSeasonsTable(sortName?: string): Promise<SeasonsTableResponse> {
+      return this.client.get('/seasons/table' + (sortName ? ('?sort=' + sortName) : ''))
+          .then((response: ResponseData) => response.data as SeasonsTableResponse)
    }
 }
 
