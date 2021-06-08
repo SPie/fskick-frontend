@@ -77,10 +77,27 @@ export default class Table extends Vue {
   fetchSeasonStats(sort?: string): void {
     SeasonsService.getSeasonsTable(sort)
       .then((response: SeasonsTableResponse) => {
+        this.highlightSortRows(sort)
+
         this.season = response.season
         this.playerStats = response.playerStats
       })
+  }
 
+  highlightSortRows(sort?: string): void {
+    this.sortPoints = this.sortWins = this.sortGames = false
+
+    switch (sort) {
+      case 'wins':
+        this.sortWins = true
+        break
+      case 'games':
+        this.sortGames = true
+        break
+      case 'pointsRatio':
+      default:
+        this.sortPoints = true
+    }
   }
 }
 </script>
