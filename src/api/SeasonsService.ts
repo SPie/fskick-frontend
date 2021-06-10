@@ -1,6 +1,6 @@
 import client, {ResponseData} from './client'
 import {AxiosInstance} from 'axios'
-import {SeasonsTableResponse} from '@/api/responses/games'
+import { SeasonsResponse, SeasonsTableResponse} from '@/api/responses/games'
 
 class SeasonsService {
 
@@ -10,9 +10,21 @@ class SeasonsService {
       this.client = client
    }
 
-   getSeasonsTable(sortName?: string): Promise<SeasonsTableResponse> {
-      return this.client.get('/seasons/table' + (sortName ? ('?sort=' + sortName) : ''))
-          .then((response: ResponseData) => response.data as SeasonsTableResponse)
+   getSeasons(): Promise<SeasonsResponse> {
+      return this.client.get('/seasons').then((response: ResponseData) => response.data as SeasonsResponse)
+   }
+
+
+   getSeasonsTable(seasonUuid?: string, sortName?: string): Promise<SeasonsTableResponse> {
+      let path = '/seasons/table'
+      if (seasonUuid) {
+         path += ('/' + seasonUuid)
+      }
+      if (sortName) {
+         path += ('?sort=' + sortName)
+      }
+
+      return this.client.get(path).then((response: ResponseData) => response.data as SeasonsTableResponse)
    }
 }
 
