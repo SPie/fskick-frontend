@@ -23,11 +23,11 @@
               <th class="border-b-2 text-left px-1 md:px-6 py-4 hover:underline" :class="{ underline: isSortWins() }" @click="sortTable('wins')">
                 Wins
               </th>
-              <th class="border-b-2 text-left px-1 md:px-6 py-4 hover:underline" :class="{ underline: isSortWinRatio() }" @click="sortTable('winRatio')">
-                Win Ratio
-              </th>
               <th class="border-b-2 text-left px-1 md:px-6 py-4 hover:underline" :class="{ underline: isSortGames() }" @click="sortTable('games')">
                 Games ({{season.games.length}})
+              </th>
+              <th class="border-b-2 text-left px-1 md:px-6 py-4 hover:underline" :class="{ underline: isSortWinRatio() }" @click="sortTable('winRatio')">
+                Win Ratio
               </th>
             </tr>
           </thead>
@@ -37,8 +37,8 @@
               <td class="border-b-2 text-left px-1 md:px-6 py-2">{{player.name}}</td>
               <td class="border-b-2 text-left px-1 md:px-6 py-2">{{player.pointsRatio.toFixed(2)}}</td>
               <td class="border-b-2 text-left px-1 md:px-6 py-2">{{player.wins}}</td>
-              <td class="border-b-2 text-left px-1 md:px-6 py-2">{{getWinRatio(player.wins, player.games)}}</td>
-              <td class="border-b-2 text-left px-1 md:px-6 py-2">{{player.games}} ({{getGamesRatio(player.games)}})</td>
+              <td class="border-b-2 text-left px-1 md:px-6 py-2">{{player.games}} ({{getGamesRatio(player.games)}}%)</td>
+              <td class="border-b-2 text-left px-1 md:px-6 py-2">{{getWinRatio(player.wins, player.games)}}%</td>
             </tr>
           </tbody>
         </table>
@@ -73,11 +73,11 @@ export default class Table extends Vue {
     if (!this.season) {
       return '0'
     }
-    return (playersGames / this.season.games.length).toFixed(2)
+    return (playersGames / this.season.games.length * 100).toFixed(2)
   }
 
   getWinRatio(playersWins: number, playersGames: number): string {
-    return (playersWins / playersGames).toFixed(2)
+    return (playersWins / playersGames * 100).toFixed(2)
   }
 
   isSortPoints(): boolean {
