@@ -9,3 +9,7 @@ export interface SeasonsTableResponse {
     season: Season
     playerStats: PlayerStats[]
 }
+
+export interface GamesCountResponse {
+    gamesCount: number
+}

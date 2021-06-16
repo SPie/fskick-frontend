@@ -2,20 +2,26 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 
 import Impressum from '@/views/Impressum.vue'
-import Table from '@/views/seasons/Table.vue'
+import SeasonsTable from '@/views/seasons/SeasonsTable.vue'
+import PlayersTable from '@/views/players/PlayersTable.vue'
 
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    name: 'Table',
-    component: Table
+    name: 'SeasonsTable',
+    component: SeasonsTable
   },
   {
     path: '/impressum',
     name: 'Impressum',
     component: Impressum
+  },
+  {
+    path: '/players',
+    name: 'PlayersTable',
+    component: PlayersTable
   }
 ]
 
