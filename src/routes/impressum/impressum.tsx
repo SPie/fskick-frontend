@@ -1,7 +1,8 @@
 const Impressum = () => {
-  const text: string = 'Das Impressum';
+  const text: string|undefined = process.env.REACT_APP_IMPRESSUM_TEXT;
+
   return (
-    <div>
+    <div className="text-center">
       {text}
     </div>
   );
