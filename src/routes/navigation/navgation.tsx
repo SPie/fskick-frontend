@@ -22,7 +22,7 @@ const Navigation = () => {
 
             </div>
 
-            <footer className="text-center text-xs"><Link to="/impressum">Impressum</Link></footer>
+            <footer className="text-center text-xs"><Link to="/imprint">Imprint</Link></footer>
         </div>
     );
 }

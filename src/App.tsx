@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 import Navigation from './routes/navigation/navgation';
 import Seasons from './routes/seasons/seasons';
 import Players from './routes/players/players';
-import Impressum from './routes/impressum/impressum';
+import Imprint from './routes/impressum/imprint';
 
 const App = () => {
   return (
@@ -11,7 +11,7 @@ const App = () => {
         <Route path="/" element={<Navigation />}>
             <Route index element={<Seasons />} />
             <Route path="players" element={<Players />} />
-            <Route path="impressum" element={<Impressum />} />
+            <Route path="imprint" element={<Imprint />} />
         </Route>
       </Routes>
   );
