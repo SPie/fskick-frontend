@@ -1,12 +1,12 @@
-import {get} from '../client';
-import {PlayerStats, Season} from '../types';
+import {get} from './client';
+import {PlayerStats, Season} from './types';
 
 export interface SeasonsResponse {
   seasons: Season[]
 }
 
 export const getSeasons = async (): Promise<SeasonsResponse> => {
-  return await get('/seasons').then(response => response.data);
+  return await get('/seasons').then();
 };
 
 export interface SeasonsTableResponse {
@@ -23,5 +23,13 @@ export const getSeasonsTable = async (season?: string, sortName?: string): Promi
     path += ('?sort=' + sortName)
   }
 
-  return await get(path).then(response => response.data);
+  return await get(path).then();
+};
+
+export interface GamesCountResponse {
+  gamesCount: number;
+}
+
+export const getGamesCount = async (): Promise<GamesCountResponse> => {
+  return await get('/games/count').then();
 };

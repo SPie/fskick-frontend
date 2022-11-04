@@ -12,5 +12,5 @@ export interface Response<T = any> {
 }
 
 export const get = (path: string): Promise<Response> => {
-  return client.get(path);
+  return client.get(path).then(response => response.data);
 }

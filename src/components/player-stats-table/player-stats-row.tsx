@@ -15,7 +15,7 @@ const PlayerStatsRow = ({player, gamesCount}: PlayerStatsRowProps) => {
   const calculateWinRatio = (): string => (player.wins / player.games * 100).toFixed(2);
 
   return (
-    <tr key={player.uuid}>
+    <tr>
       <PlayerStatsCell>{player.position}</PlayerStatsCell>
       <PlayerStatsCell>{player.name}</PlayerStatsCell>
       <PlayerStatsCell>{player.pointsRatio.toFixed(2)}</PlayerStatsCell>
