@@ -1,14 +1,16 @@
-import axios, { AxiosInstance } from 'axios'
+import axios, {AxiosInstance} from 'axios';
 
 const client: AxiosInstance = axios.create({
-    baseURL: process.env.VUE_APP_API_ENDPOINT,
-    headers: {
-        'Content-type': 'application/json'
-    }
-})
+  baseURL: process.env.REACT_APP_API_ENDPOINT,
+  headers: {
+    'Content-type': 'application/json',
+  },
+});
 
-export interface ResponseData {
-    data: any
+export interface Response<T = any> {
+  data: T;
 }
 
-export default client
+export const get = (path: string): Promise<Response> => {
+  return client.get(path).then(response => response.data);
+}
