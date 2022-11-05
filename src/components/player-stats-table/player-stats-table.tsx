@@ -29,7 +29,7 @@ const PlayerStatsTable = ({playerStats, gamesCount, sort, sortHandler}: PlayerSt
       </tr>
       </thead>
       <tbody>
-        { playerStats.map((player: PlayerStats) => <PlayerStatsRow player={player} gamesCount={gamesCount} key={player.uuid} />) }
+        { playerStats.map((player: PlayerStats) => <PlayerStatsRow key={player.uuid} player={player} gamesCount={gamesCount} />) }
       </tbody>
     </table>
   );
