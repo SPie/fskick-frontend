@@ -13,7 +13,7 @@ const App = () => {
             <Route index element={<Seasons />} />
             <Route path="players" element={<Players />} />
             <Route path="imprint" element={<Imprint />} />
-            <Route path="player/:player" element={<Player />} />
+            <Route path="player/:uuid" element={<Player />} />
         </Route>
       </Routes>
   );

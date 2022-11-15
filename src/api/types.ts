@@ -28,5 +28,8 @@ export interface PlayerStats {
   points: number;
   wins: number;
   games: number;
-  // attendances: Attendance[];
+}
+
+export interface PlayerStatsWithAttendances extends PlayerStats {
+  attendances: Attendance[];
 }
