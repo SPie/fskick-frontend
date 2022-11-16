@@ -32,3 +32,12 @@ export const getPlayer = async (uuid: string, sortName?: string): Promise<Player
     return {player: response.playerStats[0]}
   });
 }
+
+export const getFavoriteTeam = async (uuid: string, sortName?: string): Promise<PlayersResponse> => {
+  let path = '/players/' + uuid + '/team';
+  if (sortName) {
+    path += ('?sort=' + sortName);
+  }
+
+  return await get(path).then()
+}

@@ -7,6 +7,7 @@ import {getGamesCount} from '../../api/seasons';
 
 import PlayerStatsTable from '../../components/player-stats-table/player-stats-table';
 import Streak from '../../components/streak/streak';
+import FavoriteTeam from "../../components/favorite-team/favorite-team";
 
 const Player = () => {
   const [sort, setSort] = useState('pointsRatio');
@@ -25,7 +26,7 @@ const Player = () => {
 
       fetchPlayer();
     }
-  }, [sort])
+  }, [uuid, sort])
 
   useEffect(() => {
     const fetchGamesCount = async () => {
@@ -54,14 +55,9 @@ const Player = () => {
                   <PlayerStatsTable playerStats={[player]} gamesCount={gamesCount} sort={sort} sortHandler={setSort} />
                 </div>
 
-                <div className="my-5">
-                  <h3 className="text-left text-sm md:text-xl font-bold">Streak</h3>
+                <Streak player={player} />
 
-                  <div className="my-5 flex space-x-4">
-                    <Streak attendances={player.attendances.slice(-5)} />
-                  </div>
-
-                </div>
+                <FavoriteTeam player={player} />
               </div>
             </div>
           )}
