@@ -1,4 +1,4 @@
-import {PlayerStats} from './types';
+import {PlayerStats, PlayerStatsWithAttendances} from './types';
 import {get} from './client';
 
 export interface PlayersResponse {
@@ -12,4 +12,32 @@ export const getPlayers = async (sortName?: string): Promise<PlayersResponse> =>
   }
 
   return await get(path).then();
+}
+
+export interface PlayersResponseWithAttendances {
+  playerStats: PlayerStatsWithAttendances[];
+}
+
+export interface PlayerResponse {
+  player: PlayerStatsWithAttendances;
+}
+
+export const getPlayer = async (uuid: string, sortName?: string): Promise<PlayerResponse> => {
+  let path = '/players/' + uuid;
+  if (sortName) {
+    path += ('?sort=' + sortName);
+  }
+
+  return await get(path).then((response: PlayersResponseWithAttendances) => {
+    return {player: response.playerStats[0]}
+  });
+}
+
+export const getFavoriteTeam = async (uuid: string, sortName?: string): Promise<PlayersResponse> => {
+  let path = '/players/' + uuid + '/team';
+  if (sortName) {
+    path += ('?sort=' + sortName);
+  }
+
+  return await get(path).then()
 }

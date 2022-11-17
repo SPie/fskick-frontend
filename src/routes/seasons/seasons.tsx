@@ -32,7 +32,6 @@ const Seasons = () => {
 
   useEffect(() => {
     const fetchSeasonTable = async () => {
-      console.log(selectedSeason);
       const seasonTable: SeasonTable = await getSeasonsTable(selectedSeason, sort);
 
       setSeasonTable(seasonTable);

@@ -1,6 +1,8 @@
+import {Link} from 'react-router-dom';
+
 import {PlayerStats} from '../../api/types';
 
-import PlayerStatsCell from "./player-stats-cell";
+import PlayerStatsCell from './player-stats-cell';
 
 interface PlayerStatsRowProps {
   player: PlayerStats;
@@ -17,11 +19,11 @@ const PlayerStatsRow = ({player, gamesCount}: PlayerStatsRowProps) => {
   return (
     <tr>
       <PlayerStatsCell>{player.position}</PlayerStatsCell>
-      <PlayerStatsCell>{player.name}</PlayerStatsCell>
+      <PlayerStatsCell><Link to={`/player/${player.uuid}`} className="underline">{player.name}</Link></PlayerStatsCell>
       <PlayerStatsCell>{player.pointsRatio.toFixed(2)}</PlayerStatsCell>
       <PlayerStatsCell>{player.wins}</PlayerStatsCell>
-      <PlayerStatsCell>{player.games} ({calculateGamesRatio()})</PlayerStatsCell>
-      <PlayerStatsCell>{calculateWinRatio()}</PlayerStatsCell>
+      <PlayerStatsCell>{player.games} ({calculateGamesRatio()} %)</PlayerStatsCell>
+      <PlayerStatsCell>{calculateWinRatio()} %</PlayerStatsCell>
     </tr>
   );
 };

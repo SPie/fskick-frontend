@@ -15,6 +15,11 @@ export interface Season {
   games: Game[];
 }
 
+export interface Attendance {
+  game: Game;
+  win: boolean;
+}
+
 export interface PlayerStats {
   uuid: string;
   name: string;
@@ -23,4 +28,8 @@ export interface PlayerStats {
   points: number;
   wins: number;
   games: number;
+}
+
+export interface PlayerStatsWithAttendances extends PlayerStats {
+  attendances: Attendance[];
 }
